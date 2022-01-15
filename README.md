@@ -1,2 +1,2 @@
-# javascript-training
+# codesandbox-test
 Created with CodeSandbox
