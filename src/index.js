@@ -3,7 +3,7 @@
  */
 
 var val1 = "var変数";
-console.log(val1);
+console.log(val1); // var変数
 
 // var変数は上書き可能
 val1 = "var変数を上書き";
@@ -41,6 +41,10 @@ const val4 = {
 val4.name = "tarou";
 val4.address = "japan";
 console.log(val4);
+
+const test = {};
+test.name = "テストさん";
+test.age = 10;
 
 const val5 = ["dog", "cat"];
 val5[0] = "bird";
@@ -84,9 +88,17 @@ const func2 = (str) => {
 };
 console.log(func2("func2です"));
 
+const funcTest = () => {
+  return "Hello";
+};
+console.log(funcTest());
+
 // 1行で終わる処理は{}省略できる
 const func3 = (str) => str;
 console.log(func3("func3です"));
+
+const func3Test = () => false;
+console.log(func3Test());
 
 const func4 = (num1, num2) => {
   return num1 + num2;
@@ -134,6 +146,10 @@ const arr1 = [1, 2];
 console.log(arr1);
 console.log(...arr1);
 
+const arrString = ["9", "9"];
+console.log(arrString);
+console.log(...arrString);
+
 const sumFunc = (num1, num2) => console.log(num1 + num2);
 // sumFunc(arr1[0], arr1[1]);
 sumFunc(...arr1);
@@ -144,6 +160,7 @@ const [num1, num2, ...num3] = arr2;
 console.log(num1);
 console.log(num2);
 console.log(num3);
+console.log(arr2);
 
 //配列のコピー、結合
 const arr4 = [10, 20];
@@ -163,6 +180,42 @@ const nameArr = ["伊藤", "佐藤", "鈴木"];
 // for (let index = 0; index < nameArr.length; index++) {
 //   console.log(nameArr[index]);
 // }
+
+// 配列のデータを出力(配列のみ)
+const arrayName = ["potato", "pasta", "rice"];
+//for...of
+for (const data of arrayName) {
+  console.log(data);
+}
+
+// 連想配列の一覧を配列にまとめる
+const nameArr3 = [
+  {
+    name: "test",
+    age: 20
+  },
+  {
+    name: "テスト",
+    age: 30
+  }
+];
+console.log(`${nameArr3[0].name}さん`);
+
+// for...in
+for (const index in arrayName) {
+  console.log(index);
+  console.log(arrayName[index]);
+}
+
+for (const index in nameArr3) {
+  console.log(index);
+  console.log(nameArr3[index]);
+}
+
+for (const key in nameArr3[0]) {
+  console.log(key);
+  console.log(nameArr3[0][key]);
+}
 
 // map使用
 // リターンされた結果に基づいて新しい配列を生成
@@ -234,3 +287,29 @@ console.log(fee);
 const num5 = null;
 const fee2 = num5 && "何か設定されました";
 console.log(fee2);
+
+const ccc = 0 === "0" ? true : false;
+console.log(ccc);
+
+// const ddd = 0 == "0" ? true : false;
+// console.log(ddd);
+
+/**
+ * Null合体
+ */
+// 左辺がnullまたはundifinedのとき右辺の値を返し、それ以外は左辺を返す
+const nfunc = (val) => {
+  return val;
+};
+
+const null1 = nfunc(0) ?? "null!";
+console.log(null1);
+
+const null2 = nfunc(null) ?? "null!!";
+console.log(null2);
+
+const null3 = nfunc(undefined) ?? "null!!!";
+console.log(null3);
+
+const null4 = nfunc("hahaha") ?? "null!!!!";
+console.log(null4);
